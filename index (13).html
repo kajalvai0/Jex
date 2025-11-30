@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জেক্স টেক্সটাইল - শাড়ি, লুঙ্গি, বেডশীট</title>
+    <style>
+        :root {
+            --primary-color: #8e44ad;
+            --secondary-color: #9b59b6;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x600') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        /* Categories Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Products Section */
+        .products {
+            margin-bottom: 60px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            margin-bottom: 60px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/images /logo.jpg" alt="জেক্স টেক্সটাইল লোগো">
+                <h1>জেক্স টেক্সটাইল</h1>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="#products">পণ্য</a></li>
+                    <li><a href="#categories">বিভাগ</a></li>
+                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>উচ্চমানের টেক্সটাইল পণ্য</h2>
+            <p>শাড়ি, লুঙ্গি, বেডশীট এবং আরও অনেক কিছু - সেরা মানের টেক্সটাইল পণ্য একত্রিত</p>
+            <a href="#products" class="btn">পণ্য দেখুন</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container" id="categories">
+        <div class="section-title">
+            <h2>পণ্য বিভাগ</h2>
+        </div>
+        <div class="categories">
+            <div class="category-card">
+                <img src="/images /sari.jpg">
+                <div class="category-content">
+                    <h3>শাড়ি</h3>
+                    <p>বিভিন্ন ধরনের ও ডিজাইনের শাড়ি</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://via.placeholder.com/300x200?text=lungi" alt="লুঙ্গি" class="category-img">
+                <div class="category-content">
+                    <h3>লুঙ্গি</h3>
+                    <p>সুতি ও পাতলা লুঙ্গির সংগ্রহ</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://via.placeholder.com/300x200?text=Bed+Sheet" alt="বেডশীট" class="category-img">
+                <div class="category-content">
+                    <h3>বেডশীট</h3>
+                    <p>বিভিন্ন সাইজের বেডশীট</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://via.placeholder.com/300x200?text=Other" alt="অন্যান্য" class="category-img">
+                <div class="category-content">
+                    <h3>অন্যান্য</h3>
+                    <p>বিভিন্ন টেক্সটাইল পণ্য</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container products" id="products">
+        <div class="section-title">
+            <h2>জনপ্রিয় পণ্য</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x250?text=Saree+1" alt="শাড়ি ১" class="product-img">
+                <div class="product-content">
+                    <h3>ব্যানার্জি শাড়ি</h3>
+                    <p>উচ্চমানের সুতি শাড়ি, নকশাকৃত</p>
+                    <div class="product-price">৳ ১,২০০</div>
+                    <div class="product-actions">
+                        <button class="btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x250?text=Lungi+1" alt="লুঙ্গি ১" class="product-img">
+                <div class="product-content">
+                    <h3>সুতি লুঙ্গি</h3>
+                    <p>নরম ও আরামদায়ক সুতি লুঙ্গি</p>
+                    <div class="product-price">৳ ৩৫০</div>
+                    <div class="product-actions">
+                        <button class="btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x250?text=Bed+Sheet+1" alt="বেডশীট ১" class="product-img">
+                <div class="product-content">
+                    <h3>কিং সাইজ বেডশীট</h3>
+                    <p>১০০% সুতি, প্রিমিয়াম কোয়ালিটি</p>
+                    <div class="product-price">৳ ১,৮০০</div>
+                    <div class="product-actions">
+                        <button class="btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x250?text=Saree+2" alt="শাড়ি ২" class="product-img">
+                <div class="product-content">
+                    <h3>জামদানি শাড়ি</h3>
+                    <p>ঐতিহ্যবাহী জামদানি শিল্প</p>
+                    <div class="product-price">৳ ৫,৫০০</div>
+                    <div class="product-actions">
+                        <button class="btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>জেক্স টেক্সটাইল সম্পর্কে</h2>
+                    <p>জেক্স টেক্সটাইল ১৯৯৫ সাল থেকে বাংলাদেশের টেক্সটাইল শিল্পে সেবা প্রদান করে আসছে। আমরা উচ্চমানের শাড়ি, লুঙ্গি, বেডশীট এবং অন্যান্য টেক্সটাইল পণ্য উৎপাদন ও সরবরাহ করি।</p>
+                    <p>আমাদের লক্ষ্য হল সর্বোচ্চ মানের টেক্সটাইল পণ্য সাশ্রয়ী মূল্যে গ্রাহকদের কাছে পৌঁছে দেওয়া। আমাদের দক্ষ কারিগর এবং আধুনিক প্রযুক্তি ব্যবহার করে আমরা প্রতিটি পণ্য তৈরি করি।</p>
+                    <a href="#contact" class="btn">আমাদের সাথে যোগাযোগ করুন</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://via.placeholder.com/600x400?text=Jex+Textile+Showroom" alt="জেক্স টেক্সটাইল শোরুম">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container contact" id="contact">
+        <div class="section-title">
+            <h2>যোগাযোগ করুন</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>আমাদের ঠিকানা</h3>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <p>১২৩ টেক্সটাইল মার্কেট, নরসিংদী, বাংলাদেশ</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <p>+৮৮০ ১৭১২৩৪৫৬৭৮</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>✉️</i>
+                        <p>info@jextextile.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>🕒</i>
+                        <p>শনি - বৃহস্পতি: সকাল ৯টা - রাত ৯টা</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i>f</i></a>
+                    <a href="#"><i>in</i></a>
+                    <a href="#"><i>ig</i></a>
+                    <a href="#"><i>yt</i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>বার্তা পাঠান</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">আপনার নাম</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ইমেইল</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">ফোন নম্বর</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">বার্তা</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">বার্তা পাঠান</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>জেক্স টেক্সটাইল</h3>
+                    <p>উচ্চমানের টেক্সটাইল পণ্যের জন্য আপনার বিশ্বস্ত সঙ্গী। ১৯৯৫ সাল থেকে সেবা প্রদান করে আসছি।</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                        <a href="#"><i>yt</i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিংক</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">হোম</a></li>
+                        <li><a href="#products">পণ্য</a></li>
+                        <li><a href="#categories">বিভাগ</a></li>
+                        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                        <li><a href="#contact">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>পণ্য বিভাগ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">শাড়ি</a></li>
+                        <li><a href="#">লুঙ্গি</a></li>
+                        <li><a href="#">বেডশীট</a></li>
+                        <li><a href="#">তোয়ালে</a></li>
+                        <li><a href="#">কুর্তা</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <p>১২৩ টেক্সটাইল মার্কেট, ঢাকা, বাংলাদেশ</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <p>+8801733 588514</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>✉️</i>
+                        <p>info@jextextile.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; ২০২৫ জেক্স টেক্সটাইল। সকল স্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+     <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    document.getElementById('mobileNav').classList.remove('active');
+                }
+            });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('আপনার বার্তা সফলভাবে পাঠানো হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+            this.reset();
+        });
+
+        // Add to Cart Functionality
+        document.querySelectorAll('.product-actions .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('h3').textContent;
+                alert(`${productName} আপনার কার্টে যোগ করা হয়েছে!`);
+            });
+        });
+
+        // Category Card Click Event
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const categoryName = this.querySelector('h3').textContent;
+                alert(`${categoryName} বিভাগের পণ্য দেখানো হবে!`);
+            });
+        });
+    </script>
+</body>
+</html>
